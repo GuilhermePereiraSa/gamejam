@@ -57,6 +57,15 @@ public class ProjectileBehaviour : MonoBehaviour
         }
         else
         {
+
+            Health healthTarget = collision.gameObject.GetComponent<Health>();
+
+            // Tem algo nele? é o player
+            if(healthTarget != null)
+            {  
+                healthTarget.TakeDamage(1);
+            }
+
             // Bater no Mago ou qualquer outra coisa, se destroi
             Destroy(gameObject);
         }
