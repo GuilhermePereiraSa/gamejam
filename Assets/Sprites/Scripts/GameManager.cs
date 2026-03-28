@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+        } 
+        else
+        {
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 
     public void RoundDone(GameObject magoMorto)

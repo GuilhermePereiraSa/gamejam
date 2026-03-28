@@ -22,14 +22,25 @@ public class BarrelBehaviour : MonoBehaviour
     void Explode()
     {
         if (ExplosionPrefab != null)
+        {   
             Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+            GameObject explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+            ExplosionBehaviour eb = explosion.GetComponent<ExplosionBehaviour>();
+            
+            if (eb != null)
+            {
+                eb.lifeTime = FireDuration;
+            }
+        }
 
         Collider2D[] victims = Physics2D.OverlapCircleAll(transform.position, ExplosionAreaRadius);
         foreach (Collider2D obj in victims)
         {
             if (obj.CompareTag("Player"))
             {
-                Debug.Log(obj.name + "foi atingido");
+                Health healthTarget = obj.GetComponent<Health>();
+                if (healthTarget != null)
+                    healthTarget.TakeDamage((int)ExplosionDamage);
             }
         }
 

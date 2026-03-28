@@ -20,7 +20,6 @@ public class ProjectileBehaviour : MonoBehaviour
     {
 
         _rb = GetComponent<Rigidbody2D>();
-
         Destroy(gameObject, lifeTime);
 
         Collider2D projetilCollider = GetComponent<Collider2D>();
@@ -30,18 +29,14 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void Launch(Vector2 dir)
     {
-        _dir = dir;
+        _rb.velocity = dir * Speed;
     }
 
     void Update()
     {
         // pegamos ela 1 frame antes
         _lastVelocity = _rb.velocity;
-        
-        if (_dir != Vector2.zero)
-        {
-            transform.position += (Vector3)_dir * Time.deltaTime * Speed;
-        }
+
     }
 
 
