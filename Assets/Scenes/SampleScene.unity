@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &102405722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 102405723}
+  m_Layer: 0
+  m_Name: Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &102405723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102405722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16, y: 0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 120547707}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120547702
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +166,7 @@ GameObject:
   - component: {fileID: 120547705}
   - component: {fileID: 120547704}
   - component: {fileID: 120547703}
+  - component: {fileID: 120547708}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -280,13 +312,33 @@ Transform:
   m_GameObject: {fileID: 120547702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.12, y: -2.14, z: 0}
+  m_LocalScale: {x: 1.0599, y: 1.2393944, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+<<<<<<< HEAD
   - {fileID: 2004194753}
+=======
+  - {fileID: 102405723}
+>>>>>>> origin/feature/sistema-vidas
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &120547708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120547702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24283cd4b1a1b13196bde2138b35659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabFireBall: {fileID: 6539399058310026359, guid: 9709192a6b7b4e4ffb6376be48bf301b, type: 3}
+  origin: {fileID: 102405723}
+  velProjetile: 10
+  lifeTime: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     public float _playerSpeed;
 
+    public float velProjectile = 10f;
+
     private Vector2 _playerDirection;
 
     // Start is called before the first frame update
@@ -42,7 +44,8 @@ public class PlayerController : MonoBehaviour
         // Player movement
         _playerRigidBody2D.MovePosition(_playerRigidBody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection);
     }
-    
+
+
     void Shoot()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -56,5 +59,4 @@ public class PlayerController : MonoBehaviour
         ProjectileBehaviour projetil = Instantiate(ProjectilePrefab, LaunchOffset.position, rotacao);
         projetil.Launch(dir);
     }
-
 }
