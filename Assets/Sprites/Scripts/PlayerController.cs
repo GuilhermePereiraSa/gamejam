@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(ProjectilePrefab, LaunchOffset.position, transform.rotation);
+            Shoot();
         }
     }
 
@@ -43,4 +43,18 @@ public class PlayerController : MonoBehaviour
         _playerRigidBody2D.MovePosition(_playerRigidBody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection);
     }
     
+    void Shoot()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
+
+        Vector2 dir = (mousePos - LaunchOffset.position).normalized;
+
+        float angulo = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion rotacao = Quaternion.Euler(0, 0, angulo);
+
+        ProjectileBehaviour projetil = Instantiate(ProjectilePrefab, LaunchOffset.position, rotacao);
+        projetil.Launch(dir);
+    }
+
 }
