@@ -28,19 +28,21 @@ public class Hazard : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-
-        // objeto que esta aqui dentro, ja esta na lista de contagem, entao...
-        if (timers.ContainsKey(collision))
+        // Se entrou sem passar pelo OnTriggerEnter, adiciona agora
+        if (!timers.ContainsKey(collision))
         {
-            timers[collision] += Time.fixedDeltaTime;
+            Health healthTarget = collision.gameObject.GetComponent<Health>();
+            if (healthTarget)
+                timers[collision] = 0f;
+            else
+                return;
         }
 
+        timers[collision] += Time.fixedDeltaTime;
 
-        if(timers[collision] >= timeToDamage)
+        if (timers[collision] >= timeToDamage)
         {
             collision.GetComponent<Health>().TakeDamage(damage);
-
-
             timers[collision] = 0f;
         }
     }
