@@ -48,7 +48,6 @@ public class ProjectileBehaviour : MonoBehaviour
             // Calcula o ricochete usando a direção antiga
             Vector2 direcaoRefletida = Vector2.Reflect(direction, normalParede);
 
-            // Devolve a velocidade para a bola, forçando-a a ir para a nova direção!
             _rb.velocity = direcaoRefletida * Mathf.Max(speed, 0f);
 
             // Gira a arte do fogo para ficar bonita
