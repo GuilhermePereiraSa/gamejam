@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _playerDirection;
 
-
+    private DashController dashRef;
     private ShooterRole shooter;
     private ShieldRole shielder;
 
@@ -26,11 +26,15 @@ public class PlayerController : MonoBehaviour
 
         shooter = GetComponent<ShooterRole>();
         shielder = GetComponent<ShieldRole>();
+
+        dashRef = GetComponent<DashController>();
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {       
+
+        if(dashRef && dashRef.GetisDashing()) return;
 
         // update each frame the player direction (position)
 
@@ -49,18 +53,28 @@ public class PlayerController : MonoBehaviour
 
         if(shielder && shielder.enabled)
         {
-            
+            // ? or rotate shield? -> put shield on Origin player-IA 
             shielder.AimShield(mousePos);
 
+
+            // Shielder Abilities 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 shielder.TryActivateShield(mousePos);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                dashRef.TryDash(mousePos);
             }
         }
     }
 
     void FixedUpdate()
     {
+
+        if(dashRef && dashRef.GetisDashing()) return;
+
         // Player movement
         _playerRigidBody2D.MovePosition(_playerRigidBody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection);
     }
