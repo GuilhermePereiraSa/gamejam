@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
-        Destroy(gameObject);
+        else{
+            
+            Destroy(gameObject);
+        }
     }
 
     public void RoundDone(GameObject magoMorto)

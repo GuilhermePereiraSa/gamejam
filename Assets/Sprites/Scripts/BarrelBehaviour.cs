@@ -23,7 +23,6 @@ public class BarrelBehaviour : MonoBehaviour
     {
         if (ExplosionPrefab != null)
         {   
-            Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
             GameObject explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
             ExplosionBehaviour eb = explosion.GetComponent<ExplosionBehaviour>();
             
