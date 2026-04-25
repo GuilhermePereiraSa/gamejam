@@ -26,7 +26,7 @@ public class ShooterRole : MonoBehaviour
         Vector2 dir = (Vector2)(mousePos - transform.position);
         dir.Normalize();
 
-        float distanciaSegura = 0.8f;
+        float distanciaSegura = 1.5f;
         Vector3 posicaoDeSpawn = transform.position + (Vector3)(dir * distanciaSegura);
 
         GameObject fireBall = Instantiate(ProjectilePrefab, posicaoDeSpawn, Quaternion.identity);
@@ -34,10 +34,15 @@ public class ShooterRole : MonoBehaviour
         Rigidbody2D rb = fireBall.GetComponent<Rigidbody2D>();
         rb.velocity = dir * velProjectile;
 
+        // float angulo = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        // fireBall.transform.rotation = Quaternion.Euler(0, 0, angulo);
+
+        // Calcula o ângulo da direção
         float angulo = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        fireBall.transform.rotation = Quaternion.Euler(0, 0, angulo);
-
-
+        
+        // Aplica o ângulo, mas subtrai 90 graus para corrigir o desenho "em pé"
+        fireBall.transform.rotation = Quaternion.Euler(0, 0, angulo - 90f);
+        
         nextFireTime = Time.time + fireRate;
     }
     

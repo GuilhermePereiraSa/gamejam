@@ -48,11 +48,14 @@ public class ProjectileBehaviour : MonoBehaviour
             // Calcula o ricochete usando a direção antiga
             Vector2 direcaoRefletida = Vector2.Reflect(direction, normalParede);
 
+            // 1. Aplica a nova direção e velocidade na física da bola
             _rb.velocity = direcaoRefletida * Mathf.Max(speed, 0f);
 
-            // Gira a arte do fogo para ficar bonita
+            // 2. Calcula o ângulo dessa NOVA direção
             float angulo = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angulo);
+            
+            // 3. Vira a bola para o novo ângulo, com o -90 para alinhar a ponta dela!
+            transform.rotation = Quaternion.Euler(0, 0, angulo - 90f);
         }
         else
         {

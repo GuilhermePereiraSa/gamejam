@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 
     public int maxHealth = 3;
     private int currentHealth;
-
+    public GameObject[] coracoesUI;
     public bool isInvincible = false;
 
     public float invincibilityTime = 2f;

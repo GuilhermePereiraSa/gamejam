@@ -37,6 +37,7 @@ public class DashController : MonoBehaviour
         if(canDash && !isDashing)
         {
             StartCoroutine(Dash(mousePos));
+            GetComponent<Animator>().SetTrigger("CastDash");
         }
     }
 
